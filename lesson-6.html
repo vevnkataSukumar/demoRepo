@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <style>
+        body{
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to  Lesson - 6 Objects</h1>
+    
+    <script>
+        const obj = {
+            name: 'Sukumar',
+            age: 28,
+            occupation: 'Software',
+            speak: function() {
+                return `Mr.${this.name} occupation is ${this.occupation}`;
+            },
+            attack: function(sound) {
+                return `punches bad guy with ${sound}`;
+            }
+        }
+
+        console.log(obj);
+        console.log(obj.speak());
+        console.log(obj.attack('boom'));
+        
+    </script>
+</body>
+</html>

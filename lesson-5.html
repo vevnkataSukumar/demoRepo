@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <style>
+        body{
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello Javascript</h1>
+    <div class="jumbotron text-center">
+        <button type="button" class="btn btn-danger" onclick="saySomething('This first button', true)">First Button</button>
+        <button type="button" class="btn btn-danger" onclick="saySomething('This second button')">Second Button</button>
+    </div>
+    <script>
+
+        function saySomething(message="Say Good bye", whisper=false){
+            if(whisper){
+                console.log(`%c${message}`, 'font-size:40px;color:red');
+            } else {
+                console.log(message);
+            }
+        }
+
+        saySomething('Say Hello', true);
+        saySomething('Processing');
+        saySomething();
+
+        // function squared(a){
+        //     return a * a;
+        // }
+
+        const squared = function(a){
+            return a * a;
+        }
+        const newSquared = squared(30);
+        console.log(`%c${newSquared}`, 'font-size:40px;color:red');
+        const otherSquared = squared;
+        console.log(`%c${otherSquared(12121)}`, 'font-size:40px;color:green');
+    </script>
+</body>
+</html>

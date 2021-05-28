@@ -1,0 +1,75 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <style>
+        body{
+            padding: 30px;
+        }
+        .btn-crazy {
+            position: absolute;
+            top: 30px;
+            left: 35%;
+            width: 30%;
+            transition: 0.5s ease all;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Crazy Buttons</h1>
+
+    <button type="button" class="btn-crazy btn btn-lg btn-danger">
+        click me!
+    </button>
+    <button type="button" class="btn-crazy btn btn-lg btn-primary">
+        click me!
+    </button>
+    <button type="button" class="btn-crazy btn btn-lg btn-success">
+        click me!
+    </button>
+    <button type="button" class="btn-crazy btn btn-lg btn-warning">
+        click me!
+    </button>
+
+    <script>
+        // grab everything
+        const crazyButtons = document.querySelectorAll('.btn-crazy');
+
+        // functions
+        function moveButton(e) {
+            // Find the crazy button
+            const button = e.target;
+            // get random for left offset
+            const offsetLeft = Math.random() * (window.innerWidth - button.clientWidth);
+            // get random for top offset
+            const offsetTop = Math.random() * (window.innerHeight - button.clientHeight);
+
+            console.log(offsetLeft, offsetTop);
+            // apply those numbers to buttons
+            button.style.top = offsetTop+'px';
+            button.style.left = offsetLeft+'px';
+        }
+
+        function shakeButtons() {
+            const offsetLeft = Math.random() * (window.innerWidth - this.clientWidth);
+            // get random for top offset
+            const offsetTop = Math.random() * (window.innerHeight - this.clientHeight);
+
+            // apply those numbers to buttons
+            this.style.top = offsetTop+'px';
+            this.style.left = offsetLeft+'px';
+        }
+
+        // event listeners
+        crazyButtons.forEach(button => button.addEventListener('mouseenter', shakeButtons));
+
+    </script>
+</body>
+</html>
