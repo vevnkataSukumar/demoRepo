@@ -1,0 +1,261 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <style>
+        body{ padding: 30px; }
+        body {
+            background-image: url('https://images.unsplash.com/photo-1620767188705-ab50b5c4a70e?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
+            /* background-image: url('img/manson.jpg'); */
+            background-size: cover;
+        }
+        .content {
+            font-size: 19px;
+            line-height: 1.5;
+            max-width: 500px;
+            position: relative;
+            margin: 0 auto;
+            border-radius: 5px;
+        }
+        .floater {
+            background-color: #fff;
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.4) all;
+            margin-bottom: 30px;
+            z-index: 11;
+        }
+        .floater input[type=text]{
+            padding: 30px 20px;
+            box-shadow: none;
+            border: none;
+            font-size: 14px;
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.4) all;
+        }
+        .floater-bottom {
+            padding: 6px 10px 7px;
+            text-align: right;
+            border-top: 1px solid #DDD;
+        }
+        .floater-bottom button {
+            padding: 4px 8px;
+            font-size: 10px;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(0,0,0,0.70);
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        body.show-floater .floater {
+            transform: scale(1.1);
+        }
+        body.show-floater .floater input[type=text]{
+            padding: 50px 20px;
+            font-size: 18px;
+        }
+        body.show-floater .overlay {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        /* ===========Bookmarks============= */
+        .bookmarks-list {
+            z-index: 9;
+            position: relative;
+        }
+        .bookmark {
+            background-color: #fff;
+            display: flex;
+            color: #999;
+            padding: 20px;
+            border-bottom: 1px solid #DDD;
+            transition: 0.3s ease all;
+            font-size: 16px;
+            position: relative;
+        }
+        .bookmark:hover {
+            color: #1CE;
+            text-decoration: none;
+        }
+        .bookmark:first-child {
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+        .bookmark:last-child {
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            border-bottom: 0;
+        }
+        .bookmark .img {
+            background-color: #DDD;
+            border-radius: 3px;
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQMAAADCCAMAAAB6zFdcAAAAY1BMVEUAfLz///8AertMk8YAc7jP3+0Adrmkw9+KtNfi7PQAeLoAdLkxiMGqx+GDsNQAbrb4/P5Um8uXwd7v9vq20+c2jcRhos4mh8HQ4/CQvdza6vRsqNHF2+y82OpBkseHt9kUgr8tb1/dAAACOUlEQVR4nO3b23KiQBhFYWh7OuGgosZjHOL7P2UaFUQiGQ5TZdV2fXcmcsGCnzQGgwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8DLMeM/ehbHSyXjps3diHDcNx5u6Z+/GKO7tPzR4o4FEg+jPcJFIg9ncDjWfiTR4H74P7p0GNKDBeXvVBnH35a9mA2O3i4npuleSDcxp53+S7W3H7QUbmG12Wft9dIug2MAeygXwZ9xpe70GJq9uAnadTgTBBvFn1WD1qudBvUGnHRNsEGyrBsek9rbW9YJiA/u3bDCpzYLL2wZDsYFx0SXBV22/7EeYtkRQbOB/slxl2W5RmwS79FeHlmnQbGCcf2Vrh93ui/Pi8PhPpWaDoPiXQ+2F/bouHOdFnx/bqzaos7PyIrm3yXqZNH79Cg2S24Ih3PgzYtN46ws0cJvGx+hZfH9x1G/gFmFT435SvoHLfyTw03C3UlBvEK8fJGhMg3iDuPw45bdpUG1gkuJItyUIw0X9TkKzgcuPqTXxadWSwN9V36ZBs0G89sd/akzUluBuGiQbnBP4Y/1Lgvo0KDaI07arwONpEGxwPQv+qZoGvQZdE9ymQa6B65wgXF1XSmoNeiSopkGsQa8E5TRoNeiZ4DoNUg36JvDrqGIalBrEed8El2kQamBOh6i3o1aDwAx4NrH4fFWpweDtaaDTgGd1eWabZ/dpEPBdnjO+0xXw3T4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQC/fV9MkWl20x+EAAAAASUVORK5CYII=');
+            background-size: cover;
+            width: 120px;
+            height: 60px;
+            margin-right: 20px;
+            background-position: top center;
+        }
+
+        .bookmark .title {
+            display: flex;
+            align-items: center;
+        }
+        .bookmark .glyphicon-remove {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #EEE;
+            font-size: 12px;
+            transition:  0.3s ease color;
+            cursor: pointer;
+        }
+        .bookmark:hover .glyphicon-remove {
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="overlay"></div>
+
+    <div class="floater content">
+        <form class="bookmark-form">
+            <div class="floater-top">
+                <input type="text" class="form-control" placeholder="Whats on your mind?">
+            </div>
+            <div class="floater-bottom">
+                <button type="submit" class="btn btn-primary btn-sm">Add</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="bookmarks-list content"></div>
+
+
+    <script>
+        const body = document.body;
+        const input = document.querySelector('input[type=text]');
+        const overlay = document.querySelector('.overlay');
+
+        function showFloater() {
+            body.classList.add('show-floater');
+        }
+
+        function closeFloater() {
+            if(body.classList.contains('show-floater')) {
+                body.classList.remove('show-floater');
+            }
+        }
+
+        input.addEventListener('focusin', showFloater);
+        // input.addEventListener('focusout', closeFloater);
+        overlay.addEventListener('click', closeFloater);
+
+        // ================Bookmark================
+
+        const bookmarkList = document.querySelector('.bookmarks-list');
+        const bookmarkForm = document.querySelector('.bookmark-form');
+        const bookmarkInput = document.querySelector('input[type=text]');
+        const bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+        const apiUrl = 'https://opengraph.io/api/1.0/site';
+        const appId = '58858c7bcf07b61e64257391';
+
+        fillBookmarksList(bookmarks);
+
+        function createBookmark(e) {
+            e.preventDefault();
+
+            if(!bookmarkInput.value){
+                alert('Enter info!');
+                return;
+            };
+            const url = encodeURIComponent(bookmarkInput.value);
+
+            fetch(`${apiUrl}/${url}?app_id=${appId}`)
+            .then(response => response.json())
+            .then(data => {
+                const bookmark = {
+                    title: data.hybridGraph.title,
+                    image: data.hybridGraph.image,
+                    link: data.hybridGraph.url
+                }
+
+                bookmarks.push(bookmark);
+
+                fillBookmarksList(bookmarks);
+                storeBookmarks(bookmarks);
+
+                bookmarkForm.reset();
+            })
+            .catch(error => {
+                alert('There was a problem getting info!');
+            })
+
+            // const title = bookmarkInput.value;
+            // const bookmark = {
+            //     title: title
+            // }
+
+            // bookmarks.push(bookmark);
+
+            // fillBookmarksList(bookmarks);
+            // storeBookmarks(bookmarks);
+
+            // bookmarkForm.reset();
+
+            // const title = bookmarkInput.value;
+            // const bookmark = document.createElement('a');
+            // bookmark.className="bookmark";
+            // bookmark.innerText = title;
+            // bookmark.href = "#";
+            // bookmark.target = "_blank";
+            // bookmarkList.appendChild(bookmark);
+        }
+
+        function fillBookmarksList(bookmarks=[]) {
+            const bookmarkHtml = bookmarks.map((bookmark, i) => {
+                return `
+                    <a href="${bookmark.link}" target="_blank" class="bookmark" data-id="${i}">
+                        <div class="img" style="background-image:url('${bookmark.image}')"></div>
+                        <div class="title">${bookmark.title}</div>
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                `; 
+            }).join('');
+            
+            bookmarkList.innerHTML = bookmarkHtml;
+        }
+
+        function storeBookmarks(bookmarks=[]) {
+            localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+        }
+
+        function removeBookmark(e) {
+            if(!e.target.matches('.glyphicon-remove')) return;
+
+            // find index
+            const index = e.target.parentNode.dataset.id;
+            // remove from bookmark
+            bookmarks.splice(index, 1);
+            // fill the list
+            fillBookmarksList(bookmarks);
+            // update in local storage
+            storeBookmarks(bookmarks);
+        }
+
+        bookmarkForm.addEventListener('submit', createBookmark);
+        bookmarkList.addEventListener('click', removeBookmark)
+    </script>
+</body>
+</html>

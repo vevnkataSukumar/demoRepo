@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" >
+</head>
+<body>
+  
+    <!-- Javascript code here -->
+    <script>
+        const a = 10;
+        const b=12;
+        const d = "22";
+        let e = 12;
+
+        console.group("Addition");
+            console.log(a+b);
+            console.log(a+d);
+        console.groupEnd();
+        console.group("Multiplication");
+            console.log(a*d);
+        console.groupEnd();
+
+        console.group("Incrementing");
+            console.log(a+1);
+            console.log(e++);
+            console.log(e += b);
+            console.log(e += d);
+        console.groupEnd();
+        let f=0;
+        console.time();
+            for (let index = 0; index < 200; index++) {
+                f += index;
+            }
+            console.log('f: ', f);
+        console.timeEnd();
+    </script>
+</body>
+</html>

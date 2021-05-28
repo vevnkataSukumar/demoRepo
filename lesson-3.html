@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        const fName = 'venkata';
+        const lName = 'VENKATA';
+        console.group('Strings');
+            console.log(fName == lName);
+            console.log(fName == lName.toLocaleLowerCase());
+        console.groupEnd();
+
+        const num = 10;
+        const num1 = '10';
+
+        console.group('Numbers');
+            console.log(num == num1);
+            console.log(num === num1);
+            console.log(num != num1);
+            console.log(num !== num1);
+        console.groupEnd();
+
+        console.group('Booleans');
+            console.log(Boolean(fName));
+        console.groupEnd();
+
+        let fArr = [1,2,3];
+        let sArr = [1,2,3];
+        let fObj = {name: 'sukumar'};
+        let sObj = [1,2,3];
+        console.group('Objects and Array');
+            console.log(fArr == sArr);
+            console.log(fObj == sObj);
+        console.groupEnd();
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            padding: 30px;
+        }
+        body {
+            background-color: #EFEFEF;
+        }
+        html {
+            overflow-y: scroll;
+        }
+        ul {
+            margin-bottom: 0;
+        }
+        .accordion {
+            background-color: #FFFFFF;
+            padding: 30px;
+            border-radius: 5px;
+        }
+        .question {
+            border-top: 1px solid #EEE;
+            padding: 20px;
+            cursor: pointer;
+            position: relative;
+        }
+        .question h2 {
+            color: #C00C00;
+            margin: 0;
+            font-size: 20px;
+        }
+        .question .icon {
+            position: absolute;
+            right: 20px;
+            top: 0;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            color: #C00C00;
+            transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
+        }
+        .answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
+        }
+        .answer p {
+            padding: 20px;
+        }
+
+        .accordion li.open .question .icon {
+            transform: rotate(180deg);
+        }
+        .accordion li.open .answer {
+            max-height: 150px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+
+        <div class="accordion">
+            <ul class="list-unstyled">
+                <li class="open">
+                    <div class="question">
+                        <h2>Will I be Rich?</h2>
+                        <span class="glyphicon glyphicon-chevron-down icon"></span>
+                    </div>
+                    <div class="answer">
+                        <p>Absolutely! Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                            Doloribus officiis tempora fugit dignissimos, saepe, dolorum sint deserunt 
+                            perferendis impedit inventore porro odio nesciunt perspiciatis eius 
+                            cupiditate dicta ratione voluptate veniam? </p>
+                    </div>
+                </li>
+                <li >
+                    <div class="question">
+                        <h2>Whats for dinner?</h2>
+                        <span class="glyphicon glyphicon-chevron-down icon"></span>
+                    </div>
+                    <div class="answer">
+                        <p>Absolutely! Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                            Doloribus officiis tempora fugit dignissimos, saepe, dolorum sint deserunt 
+                            perferendis impedit inventore porro odio nesciunt perspiciatis eius 
+                            cupiditate dicta ratione voluptate veniam? </p>
+                    </div>
+                </li>
+                <li >
+                    <div class="question">
+                        <h2>Is Javascript is awesome?</h2>
+                        <span class="glyphicon glyphicon-chevron-down icon"></span>
+                    </div>
+                    <div class="answer">
+                        <p>Absolutely! Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                            Doloribus officiis tempora fugit dignissimos, saepe, dolorum sint deserunt 
+                            perferendis impedit inventore porro odio nesciunt perspiciatis eius 
+                            cupiditate dicta ratione voluptate veniam? </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <script>
+
+        const accordion = document.querySelector('.accordion');
+        const items = accordion.querySelectorAll('li');
+        const questions = accordion.querySelectorAll('.question');
+
+        function toggleAccordion() {
+            const thisItem = this.parentNode;
+            items.forEach(item => {
+                if(thisItem == item) {
+                    thisItem.classList.toggle('open');
+                    return;
+                } 
+                item.classList.remove('open');
+            });
+        }
+
+        questions.forEach(question => question.addEventListener('click', toggleAccordion))
+    </script>
+</body>
+</html>

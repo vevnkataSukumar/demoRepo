@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson - 7</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <style>
+        body{
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to  Lesson - 7 Built in Objects</h1>
+    
+    <script>
+        // numbers and Math
+        console.groupCollapsed('Numbers and Math');
+            console.log(1..toString());// method
+            console.log(Number(5));
+            console.log((123.3335345345345244545425).toFixed(4));
+            console.log(Math.random());
+            console.log(Math.ceil(12.456));
+        console.groupEnd();
+
+        const myArray = ['venkata', 'sukumar', 'smart'];
+        const obj = {
+            name: 'sukumar',
+            age: 28,
+            location: 'nellore'
+        };
+        console.group('Arrays');
+            console.log(myArray.join());
+            console.log(myArray.entries());
+            myArray.unshift('D');
+            console.log(myArray);
+            console.log(myArray.join());
+            console.log(myArray.toString());
+            // console.log(myArray.fill('blah'));
+            // console.log(Array.from(obj));
+
+            console.log(myArray.copyWithin(2,0));
+        console.groupEnd();
+    </script>
+</body>
+</html>

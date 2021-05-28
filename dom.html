@@ -1,0 +1,86 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <style>
+        body{
+            padding: 40px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to DOM</h1>
+
+    <!-- Option -1 -->
+    <div class="jumbotron text-center">
+        <button type="button" class="btn btn-danger" onclick="goBtn()">
+            Go Button
+        </button>
+    </div>
+
+    <!-- Option - 2 adding events -->
+    <div class="jumbotron text-center">
+        <button type="button" class="btn btn-danger coffee-btn" >
+            Coffee Button
+        </button>
+        <button type="button" class="btn btn-danger coffee-btn" >
+            Coffee Button
+        </button>
+        <button type="button" class="btn btn-danger coffee-btn" >
+            Coffee Button
+        </button>
+    </div>
+
+    <!-- Option - 3: Add event listeners -->
+    <div class="jumbotron text-center">
+        <button type="button" class="btn btn-primary lala-btn" >
+            Go Button
+        </button>
+    </div>
+
+    <script>
+
+        //1 - grab elements from dom
+        //2 - attach event listeners
+
+        function goBtn() {
+            document.body.style.backgroundColor = '#C00C00';
+            document.querySelector('h1').style.color = '#ffffff';
+        }
+
+        // Option -2 **************************
+        // const coffeeBtn = document.querySelector('.coffee-btn');
+        // coffeeBtn.onclick = function() {
+        //     document.body.style.backgroundColor = '#C0FFEE';
+        // }
+        // coffeeBtn.onmouseenter = goBtn;
+
+        // multiple Btn with query selector
+        const coffeeBtn = document.querySelectorAll('.coffee-btn');
+
+        function getCoffee() {
+            document.body.style.backgroundColor = '#C0FFEE';
+        }
+
+        coffeeBtn.forEach((btn) => {
+            btn.onclick = getCoffee;
+        })
+
+        // Option -3 &*&&*&*&**&**&***&&*&&
+        const lalaBtn = document.querySelector('.lala-btn');
+        function notListening() {
+            document.body.style.backgroundColor = '#1A1A1A';
+        }
+        lalaBtn.addEventListener('click', notListening);
+        lalaBtn.addEventListener('mouseenter', goBtn);
+
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach(btn => btn.addEventListener('mouseleave', notListening));
+    </script>
+</body>
+</html>
